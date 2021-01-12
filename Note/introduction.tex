@@ -1,0 +1,49 @@
+\section{引言}
+
+具有周期性变化摆长的单摆振动问题（Oscillations of a pendulum with periodically variable length (PPVL)）问题，是分析力学中的一个经典问题\cite{belyakov_nonlinear_2009}。考虑一维情形，此时系统的拉格朗日函数为：
+
+\begin{align}
+    \mathcal{L} &= \frac{1}{2}m\dot{l}^{2}+\frac{1}{2}ml^{2}\dot{\theta}^{2}-mgl(1-\cos\theta)
+\end{align}
+
+考虑到系统在此时受到阻尼力形为：
+
+\begin{align}
+    f_{damp} &= -\gamma l\dot{\theta}
+\end{align}
+
+则运动方程为：
+
+\begin{align}
+    ml^{2}\ddot{\theta}+2ml\dot{\theta}\dot{l}+\gamma l^{2}\dot{\theta}+mgl\sin\theta &= 0 \label{move}
+\end{align}
+
+此处$\dot{}$指对时间$t$求导。
+
+假设单摆长度周期性变化：
+
+\begin{align}
+    l &= l_{0} +a\varphi(\Omega t) \label{length}
+\end{align}
+
+设$\tau=\Omega t,\epsilon=\frac{a}{l_{0}},\Omega=\sqrt{\frac{g}{l_{0}}},\omega=\frac{\Omega_{0}}{\Omega},\beta=\frac{\gamma}{m\Omega_{0}}$，代入\eqref{length}，方程\eqref{move}变为：
+
+\begin{align}
+    \ddot{\theta}+\left(\frac{2\epsilon\dot{\varphi}(\tau)}{1+\epsilon\varphi(\tau)}+\beta\omega\right)\dot{\theta}+\frac{\omega^{2}\sin\theta}{1+\epsilon\varphi(\tau)} &= 0
+\end{align}
+
+此后$\dot{}$指对$\tau$求导。
+
+PPVL问题中三个关键可变动参数为：激励幅度（excitation amplitude）$\epsilon$，阻尼系数（damping coefficient）$\beta$，频率比$\omega$。
+
+为了表示方便，做变量代换：
+
+\begin{align}
+    \theta &= \frac{q}{1+\epsilon\varphi(\tau)}
+\end{align}
+
+得到：
+
+\begin{align}
+    \ddot{q}+\beta\omega\dot{q}-\frac{\epsilon(\ddot{\varphi}(\tau)+\beta\omega\dot{\varphi}(\tau))}{1+\epsilon\varphi(\tau)}q+\omega^{2}\sin\left(\frac{q}{1+\epsilon\varphi(\tau)}\right) &= 0 \label{set}
+\end{align}

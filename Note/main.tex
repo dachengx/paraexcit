@@ -1,0 +1,40 @@
+% !TEX program = xelatex
+% !BIB program = bibtex
+\documentclass{ctexart}
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath}
+
+\title{参数共振的频率研究}
+\author{徐大成 2017011838 工程物理系}
+\date{2021.01.10}
+
+\begin{document}
+\maketitle
+
+\input{abstraction}
+\input{introduction}
+\input{relations}
+\input{analysis}
+\input{conclusion}
+
+% \nocite{*}
+\bibliographystyle{unsrt}
+\bibliography{ref}
+
+\end{document}

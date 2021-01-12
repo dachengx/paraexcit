@@ -1,0 +1,15 @@
+\section{解析分析}
+
+可见方程\eqref{set}的平凡解为$q=0$，$q$的稳定性与$\theta$的稳定性相同。根据李雅普诺夫稳定性定理（\href{https://en.wikipedia.org/wiki/Lyapunov_stability}{Lyapunov's theorem on stability}）\cite{belyakov_nonlinear_2009}，\eqref{set}的稳定性由如下方程决定：
+
+\begin{align}
+    \ddot{q}+\beta\omega\dot{q}+\frac{\omega-\epsilon(\ddot{\varphi}(\tau)+\beta\omega\dot{\varphi}(\tau))}{1+\epsilon\varphi(\tau)}q &= 0 \label{stable}
+\end{align}
+
+考虑到$\beta$和$\epsilon$均为小量，将\eqref{stable}围绕$\epsilon=0$进行 Taylor 展开，只保留一阶小量：
+
+\begin{align}
+    \ddot{q}+\beta\omega\dot{q}+\left[\omega^{2}-\epsilon\left(\ddot{\varphi}(\tau)+\omega^{2}\varphi(\tau)\right)\right]q &=0 \label{hill}
+\end{align}
+
+\eqref{hill}为包含阻尼，且周期函数为$-\ddot{\varphi}(\tau)-\omega^{2}\varphi(\tau)$的希尔方程（\href{https://en.wikipedia.org/wiki/Hill_differential_equation}{Hill differential equation}）。

@@ -1,5 +1,7 @@
 \section{解析分析}
 
+\subsection{弗洛凯定理}
+
 可见方程\eqref{set}的平凡解为$q=0$，$q$的稳定性与$\theta$的稳定性相同。根据李雅普诺夫稳定性定理（\href{https://en.wikipedia.org/wiki/Lyapunov_stability}{Lyapunov's theorem on stability}）\cite{belyakov_nonlinear_2009}，\eqref{set}的稳定性由如下方程决定：
 
 \begin{align}
@@ -13,3 +15,130 @@
 \end{align}
 
 \eqref{hill}为包含阻尼，且周期函数为$-\ddot{\varphi}(\tau)-\omega^{2}\varphi(\tau)$的希尔方程（\href{https://en.wikipedia.org/wiki/Hill_differential_equation}{Hill differential equation}）。
+
+下面讨论\label{hill}出现不稳定解（即参数共振解）的条件。
+
+有满足如下常微分方程的线性周期系统：
+
+\begin{align}
+    \dot{\mathbf{x}} &= \mathbf{G}(t)\mathbf{x},\,\mathbf{x}\in\mathbb{R}^{m} \label{sys}
+\end{align}
+
+其中$\mathbf{G}(t)$是一个大小为$m\times m$的实矩阵，具有周期性：
+
+\begin{align}
+    \mathbf{G}(t) &= \mathbf{G}(t+T)
+\end{align}
+
+同时若存在两矩阵$\mathbf{X}(t)$和$\mathbf{Y}(t)$满足：
+
+\begin{align}
+    \dot{\mathbf{X}} &= \mathbf{G}(t)\mathbf{X},\,\mathbf{X}(0)=\mathbf{I} \label{x} \\ 
+    \dot{\mathbf{Y}} &= -\mathbf{G}^{T}(t)\mathbf{Y},\,\mathbf{Y}(0)=\mathbf{I} \label{y} \\
+    \mathbf{I} &= \mathbf{Y}^{T}(t)\mathbf{X}(t) \label{xy}
+\end{align}
+
+设$\rho$为 Floquet matrix $\mathbf{F}=\mathbf{X}(T)$的特征值，称为 Floquet multiplier。则有如下定理：
+
+\begin{theorem}[\href{https://en.wikipedia.org/wiki/Floquet_theory}{弗洛凯定理（Floquet theory）} \cite{seyranian_multiparameter_nodate}]
+\label{Floquet}
+\,\newline
+Linear periodic system \eqref{sys} is stable (all the solution $\mathbf{x}$ are bounded as $t\rightarrow\infty$) if and only if $|\rho|\leq1$ for all the multipliers of the Floquet matrix, and the multipliers with the unit absolute value $|\rho|=1$ are simple or semi-simple. 
+\end{theorem}
+
+其中semi-simple 指特征值的几何重数（Geometric multiplicity）等于代数重数（Algebraic multiplicity）。
+
+\subsection{自然共振频率}
+
+考察方程，对应的$\mathbf{x}$和$\mathbf{G}(t)$为：
+
+\begin{align}
+    \mathbf{x} &= \binom{q}{\dot{q}}, \,
+    \mathbf{G}(t) = 
+    \begin{pmatrix}
+        0 & 1 \\ 
+        -\omega^{2}+\epsilon\left(\ddot{\varphi}(\tau)+\omega^{2}\varphi(\tau)\right) & \beta\omega
+    \end{pmatrix}
+\end{align}
+
+考虑到$\beta$和$\epsilon$均较小，首先做近似$\beta\approx0,\epsilon\approx0$，得到：
+
+\begin{align}
+    \mathbf{G}(t) = 
+    \begin{pmatrix}
+        0 & 1 \\ 
+        -\omega^{2}+\epsilon\left(\ddot{\varphi}(\tau)+\omega^{2}\varphi(\tau)\right) & \beta\omega
+    \end{pmatrix}\approx
+    \begin{pmatrix}
+        0 & 1 \\ 
+        -\omega^{2} & 0
+    \end{pmatrix}
+\end{align}
+
+那么，我们找到满足\eqref{x},\eqref{y},\eqref{xy}的$\mathbf{X}(t)$和$\mathbf{Y}(t)$为：
+
+\begin{align}
+    \mathbf{X}(t) &= 
+    \begin{pmatrix}
+        \cos\omega t & \frac{\sin\omega t}{\omega} \\ 
+        -\omega\sin\omega t & \cos\omega t
+    \end{pmatrix} \\
+    \mathbf{Y}(t) &= 
+    \begin{pmatrix}
+        \cos\omega t & \omega\sin\omega t \\ 
+        -\frac{\sin\omega t}{\omega} & \cos\omega t
+    \end{pmatrix} \\
+\end{align}
+
+则 Floquet matrix 为：
+\begin{align}
+    \mathbf{F}_{0} &= \mathbf{X}(2\pi) =
+    \begin{pmatrix}
+        \cos2\pi\omega & \frac{\sin2\pi\omega}{\omega} \\ 
+        -\omega\sin2\pi\omega & \cos2\pi\omega
+    \end{pmatrix}
+\end{align}
+
+求$\mathbf{F}_{0}$的本征值：
+
+\begin{align}
+    \rho^{a,b} &= \cos2\pi\omega\pm i\sin2\pi\omega
+\end{align}
+
+当对于任意$k=1,2,\cdots$，$\omega\neq\frac{k}{2}$，则两个乘子$\rho^{a},\rho^{a}$为共轭的 simple 特征值，位分别位于复平面的单位圆上。对于$\omega$的取值：
+
+\begin{align}
+    \omega_{0} &= \frac{k}{2},\,k=1,2,\cdot \label{resonance}
+\end{align}
+
+两个乘子为：
+
+\begin{align}
+    \rho^{a} &= \rho^{b} = (-1)^{k}
+\end{align}
+
+对应的 Floquet matrix 为$\mathbf{F}_{0}=(-1)^{k}\mathbf{I}$，两个乘子$\rho^{a},\rho^{a}$为 semi-simple 。\eqref{resonance}称为自然频率的共振值（resonance (critical) values of the natural frequency）。
+
+上述结果是近似$\beta\approx0,\epsilon\approx0$情况下得到的，当考虑到$\beta$和$\epsilon$的非0值，对Floquet matrix $\mathbf{F}_{0}$做更加细致的分析得到\cite{seyranian_multiparameter_nodate}，只有在$omega_{0}=\frac{k}{2},\,k=1,2,\cdot$附近，即自然频率的共振值附近时，Floquet matrix 的特征值的模长$|\rho|$才可能是不小于0，即满足\eqref{Floquet}中的不稳定条件，系统才可能发生参数共振。
+
+\subsection{自然共振频率的2倍频关系}
+
+基于上述过程可以分析得到\cite{seyranian_multiparameter_nodate}，在$\epsilon,\beta,\omega$的三维参数空间中，PPVL系统的稳定性由一个半圆椎描述：
+
+\begin{align}
+    \left(\frac{\beta}{2}\right)^{2} + \left(\frac{2\omega}{k}-1\right)^{2} &< \left(a_{k}^{2}+b_{k}^{2}\right)(\frac{3\epsilon}{4})^{2} \label{cone}
+\end{align}
+
+其中$a_{k}$和$b_{k}$为周期函数$\varphi(\tau)$的 Fourier 分解系数：
+
+\begin{align}
+    a_{k} &= \frac{1}{\pi}\int_{0}^{2\pi}\varphi(\tau)\cos k\pi\mathrm{d}\tau,\,b_{k} = \frac{1}{\pi}\int_{0}^{2\pi}\varphi(\tau)\sin k\pi\mathrm{d}\tau
+\end{align}
+
+对于$\varphi(\tau)=\cos(\tau),k=1$，\eqref{cone}变为：
+
+\begin{align}
+    \left(\frac{\beta}{2}\right)^{2} + \left(\frac{2\omega}{k}-1\right)^{2} &< (\frac{3\epsilon}{4})^{2}
+\end{align}
+
+对于其他$k\neq1$，因为$a_{k}=b_{k}=0$，\eqref{cone}退化成一个点（$\beta=0,\omega=\frac{k}{2}$）。在实际运动中，由于\eqref{cone}的得出经过了几步近似，对于$k\neq1$的频率，仍然可以观察到小幅度的震荡，但远比$k=1$时的共振幅度小。

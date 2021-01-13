@@ -21,21 +21,21 @@
 有满足如下常微分方程的线性周期系统：
 
 \begin{align}
-    \dot{\mathbf{x}} &= \mathbf{G}(t)\mathbf{x},\,\mathbf{x}\in\mathbb{R}^{m} \label{sys}
+    \dot{\mathbf{x}} &= \mathbf{G}(\tau)\mathbf{x},\,\mathbf{x}\in\mathbb{R}^{m} \label{sys}
 \end{align}
 
-其中$\mathbf{G}(t)$是一个大小为$m\times m$的实矩阵，具有周期性：
+其中$\mathbf{G}(\tau)$是一个大小为$m\times m$的实矩阵，具有周期性：
 
 \begin{align}
-    \mathbf{G}(t) &= \mathbf{G}(t+T)
+    \mathbf{G}(\tau) &= \mathbf{G}(\tau+T)
 \end{align}
 
-同时若存在两矩阵$\mathbf{X}(t)$和$\mathbf{Y}(t)$满足：
+同时若存在两矩阵$\mathbf{X}(\tau)$和$\mathbf{Y}(\tau)$满足：
 
 \begin{align}
-    \dot{\mathbf{X}} &= \mathbf{G}(t)\mathbf{X},\,\mathbf{X}(0)=\mathbf{I} \label{x} \\ 
-    \dot{\mathbf{Y}} &= -\mathbf{G}^{T}(t)\mathbf{Y},\,\mathbf{Y}(0)=\mathbf{I} \label{y} \\
-    \mathbf{I} &= \mathbf{Y}^{T}(t)\mathbf{X}(t) \label{xy}
+    \dot{\mathbf{X}} &= \mathbf{G}(\tau)\mathbf{X},\,\mathbf{X}(0)=\mathbf{I} \label{x} \\ 
+    \dot{\mathbf{Y}} &= -\mathbf{G}^{T}(\tau)\mathbf{Y},\,\mathbf{Y}(0)=\mathbf{I} \label{y} \\
+    \mathbf{I} &= \mathbf{Y}^{T}(\tau)\mathbf{X}(\tau) \label{xy}
 \end{align}
 
 设$\rho$为 Floquet matrix $\mathbf{F}=\mathbf{X}(T)$的特征值，称为 Floquet multiplier。则有如下定理：
@@ -75,18 +75,18 @@ Linear periodic system \eqref{sys} is stable (all the solution $\mathbf{x}$ are 
     \end{pmatrix}
 \end{align}
 
-那么，我们找到满足\eqref{x},\eqref{y},\eqref{xy}的$\mathbf{X}(t)$和$\mathbf{Y}(t)$为：
+那么，我们找到满足\eqref{x},\eqref{y},\eqref{xy}的$\mathbf{X}(\tau)$和$\mathbf{Y}(\tau)$为：
 
 \begin{align}
-    \mathbf{X}(t) &= 
+    \mathbf{X}(\tau) &= 
     \begin{pmatrix}
-        \cos\omega t & \frac{\sin\omega t}{\omega} \\ 
-        -\omega\sin\omega t & \cos\omega t
+        \cos\omega \tau & \frac{\sin\omega \tau}{\omega} \\ 
+        -\omega\sin\omega \tau & \cos\omega \tau
     \end{pmatrix} \\
-    \mathbf{Y}(t) &= 
+    \mathbf{Y}(\tau) &= 
     \begin{pmatrix}
-        \cos\omega t & \omega\sin\omega t \\ 
-        -\frac{\sin\omega t}{\omega} & \cos\omega t
+        \cos\omega \tau & \omega\sin\omega \tau \\ 
+        -\frac{\sin\omega \tau}{\omega} & \cos\omega \tau
     \end{pmatrix} \\
 \end{align}
 
@@ -119,7 +119,7 @@ Linear periodic system \eqref{sys} is stable (all the solution $\mathbf{x}$ are 
 
 对应的 Floquet matrix 为$\mathbf{F}_{0}=(-1)^{k}\mathbf{I}$，两个乘子$\rho^{a},\rho^{a}$为 semi-simple 。\eqref{resonance}称为自然频率的共振值（resonance (critical) values of the natural frequency）。
 
-上述结果是近似$\beta\approx0,\epsilon\approx0$情况下得到的，当考虑到$\beta$和$\epsilon$的非0值，对Floquet matrix $\mathbf{F}_{0}$做更加细致的分析得到\cite{seyranian_multiparameter_nodate}，只有在$omega_{0}=\frac{k}{2},\,k=1,2,\cdot$附近，即自然频率的共振值附近时，Floquet matrix 的特征值的模长$|\rho|$才可能是不小于0，即满足\eqref{Floquet}中的不稳定条件，系统才可能发生参数共振。
+上述结果是近似$\beta\approx0,\epsilon\approx0$情况下得到的，当考虑到$\beta$和$\epsilon$的非0值，对Floquet matrix $\mathbf{F}_{0}$做更加细致的分析得到\cite{seyranian_multiparameter_nodate}，只有在$\omega_{0}=\frac{k}{2},\,k=1,2,\cdot$附近，即自然频率的共振值附近时，Floquet matrix 的特征值的模长$|\rho|$才可能是不小于0，即满足\eqref{Floquet}中的不稳定条件，系统才可能发生参数共振。
 
 \subsection{自然共振频率的2倍频关系}
 

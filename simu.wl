@@ -1,7 +1,7 @@
 Clear["Global`*"]
 nbeta=$ScriptCommandLine[[2]];
-n=ToExpression[StringTake[nbeta,3]];
-beta=ToExpression[StringTake[nbeta,-6]];
+n=ToExpression[StringTake[nbeta,4]];
+beta=ToExpression[StringTake[nbeta,-4]];
 path=$ScriptCommandLine[[3]];
 L=3;
 theta=0.001;
@@ -18,7 +18,7 @@ tlist={};
 xlist={};
 thetalist={};
 
-For[i=1,i<20000,i++,
+For[i=1,i<=10000,i++,
 xdot=-a*wd*Sin[wd*t];
 x=L+a*Cos[wd*t]+xdot*dt;
 thetadoubledot=(-alpha*x*thetadot-2*xdot*thetadot-g*Sin[theta])/x;

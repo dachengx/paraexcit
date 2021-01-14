@@ -1,4 +1,81 @@
-\section{数值计算}
+\section{数值模拟}
 
 下面用数值分析来模拟不同的$\beta,\omega$的参数组合下的PPVL系统演化规律。
 
+使用数值模拟，模拟\eqref{move}的演化：
+
+\begin{align}
+    \dot{l}_{i} &= -\epsilon\Omega\sin(\Omega t_{i-1}) \\
+    l_{i} &= l_{0} + \epsilon\cos(\Omega t_{i-1})+\dot{l}_{i}\mathrm{d}t \\
+    \ddot{\theta}_{i} &= -\frac{2}{l_{i}}\dot{\theta}_{i-1}\dot{l}_{i}-\frac{\gamma}{m}\dot{\theta}_{i-1}-\frac{g}{l_{i}}\sin\theta_{i-1} \\
+    \dot{\theta}_{i} &= \dot{\theta}_{i-1}+\ddot{\theta}_{i}\mathrm{d}t \\
+    \theta_{i} &= \theta_{i-1}+\dot{\theta}_{i}\mathrm{d}t \\
+    t_{i} &= t_{i-1}+\mathrm{d}t
+\end{align}
+
+选取了$k=\frac{\Omega_{0}}{\Omega}=\frac{1}{2},1,\frac{3}{2},2,\frac{5}{2},3$，并且$\beta=0.01$，向系统加入初值微扰（防止振动无法发生），取$l_{0}=3,\epsilon=0.3$，作单摆运动轨迹如下图（比例尺均相同）：
+
+\begin{figure}[H]
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/1.png}
+    \caption{$\frac{\Omega_{0}}{\Omega}=\frac{1}{2}$的模拟结果}
+\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/2.png}
+    \caption{$\frac{\Omega_{0}}{\Omega}=1$的模拟结果}
+\end{figure}
+\end{minipage}
+\end{figure}
+\begin{figure}[H]
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/3.png}
+    \caption{$\frac{\Omega_{0}}{\Omega}=\frac{3}{2}$的模拟结果}
+\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/4.png}
+    \caption{$\frac{\Omega_{0}}{\Omega}=2$的模拟结果}
+\end{figure}
+\end{minipage}
+\end{figure}
+\begin{figure}[H]
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/5.png}
+    \caption{$\frac{\Omega_{0}}{\Omega}=\frac{5}{2}$的模拟结果}
+\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/6.png}
+    \caption{$\frac{\Omega_{0}}{\Omega}=3$的模拟结果}
+\end{figure}
+\end{minipage}
+\end{figure}
+
+可见只有当$\frac{\Omega_{0}}{\Omega}=\frac{1}{2}$，即摆长的频率为单摆固有频率的$2$倍时，才有显著的参数共振效应。
+
+另一方面，在参数空间$\{(\omega,\beta)|\omega,\beta\in\mathbb{R}\}$中，模拟不同组合的 PPVL 参数给出的$\theta$的最大值$\max\theta$，即$\theta$的振幅，得到结果如下：
+
+\begin{figure}[H]
+    \centering
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/demo.png}
+    \caption{不同的$\omega,\beta$给出的$\theta$的振幅}
+\end{figure}
+
+可见，只有在$\omega=\frac{\Omega_{0}}{\Omega}=\frac{1}{2}$，即$k=1$，并且阻尼系数$\beta$较小时，才可能发生显著的参数共振效应。模拟计算结果与理论分析结果定量符合。

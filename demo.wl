@@ -16,7 +16,7 @@ AppendTo[theta,Max[Abs[Import[files[[i]],{"thetalist"}]]]];
 fig=Show[ListPlot3D[Transpose[{n,beta,theta}],Mesh->None,InterpolationOrder->3,ColorFunction->"SouthwestColors",PlotRange->All,AspectRatio->Automatic,ScalingFunctions->{None,None,None},AxesLabel->{Style[ToExpression["\\frac{\\Omega}{\\Omega_{0}}",TeXForm,HoldForm],Large],Style[\[Beta],Large],Style[\[Theta],Large]},ImageSize->{1000,800}]];
 Export[imgpath<>"demo.png",fig];
 
-For[n=1,n<=5,n++,
+For[n=1,n<=6,n++,
 beta=0.01;
 L=3;
 theta=0.001;
@@ -25,7 +25,7 @@ m=0.1;
 g=9.8;
 x=0;
 a=0.3;
-wd=n*Sqrt[g/L];
+wd=2*Sqrt[g/L]/n;
 alpha=beta/m;
 dt=0.01;
 t=0;

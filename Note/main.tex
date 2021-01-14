@@ -29,10 +29,18 @@ top=20mm,
 
 \begin{document}
 \maketitle
-
+\newpage
+\thispagestyle{empty}
+\begin{large}
 \tableofcontents
+\listoffigures
+\end{large}
+\newpage
+\setcounter{page}{1}
 
 \input{abstraction}
+\newpage
+\thispagestyle{empty}
 \input{introduction}
 \input{relations}
 \input{analysis}
@@ -41,5 +49,7 @@ top=20mm,
 % \nocite{*}
 \bibliographystyle{unsrt}
 \bibliography{ref}
+\newpage
+\input{appendix}
 
 \end{document}
